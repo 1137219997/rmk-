@@ -1,21 +1,88 @@
+# ============================================================
+# RMK Keyboard Configuration
+# Keyboard: A50-1
+# MCU: nRF52840
+# ============================================================
+
+
+# ============================================================
+# Keyboard basic information
+# ============================================================
+
 [keyboard]
+
 name = "A50-1"
+
 product_name = "A50-1"
+
 vendor_id = 0x4c4b
+
 product_id = 0x4643
+
 manufacturer = "juansitamen"
+
 chip = "nrf52840"
 
+# USB is enabled by default.
+# If you only want BLE, you can set:
+# usb_enable = false
+
+
+# ============================================================
+# Matrix configuration
+# ============================================================
+
 [matrix]
-# Row and col pins are mandatory
-row_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
-col_pins = ["P0_09", "P0_10", "P1_11", "P1_13", "P1_15", "P0_02", "P0_29", "P0_31", "P0_17", "P0_20", "P0_22"]
-# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
+
+# 5 rows
+row_pins = [
+    "P0_24",
+    "P1_00",
+    "P0_11",
+    "P1_04",
+    "P1_06"
+]
+
+# 11 columns
+col_pins = [
+    "P0_09",
+    "P0_10",
+    "P1_11",
+    "P1_13",
+    "P1_15",
+    "P0_02",
+    "P0_29",
+    "P0_31",
+    "P0_17",
+    "P0_20",
+    "P0_22"
+]
+
+# Your keyboard uses row2col diode direction.
 row2col = true
 
+
+# ============================================================
+# Physical keyboard layout
+# ============================================================
+
 [layout]
+
 rows = 5
+
 cols = 11
+
+# Physical matrix layout.
+#
+# The coordinates correspond to:
+#
+# (row, col)
+#
+# Empty positions are simply omitted.
+#
+# IMPORTANT:
+# The order here must correspond exactly to the order
+# of keys in every [keymap.layer].keys section.
 
 map = """
 (0,0) (0,1) (0,2) (0,3) (0,4) (0,5) (0,6) (0,7) (0,8) (0,9) (0,10)
@@ -25,11 +92,37 @@ map = """
       (4,1) (4,2) (4,3) (4,4) (4,5) (4,6) (4,7)             (4,10)
 """
 
+
+# ============================================================
+# Keymap
+# ============================================================
+
 [keymap]
+
+# Total number of layers.
+#
+# Layers are numbered:
+#   0 = base_layer
+#   1 = layer_1
+#   2 = layer_2
+#   3 = layer_3
+#   4 = layer_4
+#
+# Because your base layer uses MO(1), MO(2), MO(3),
+# at least 4 layers are required.
+# You currently have 5, so this is correct.
+
 layers = 5
 
-[[layer]]
+
+# ============================================================
+# Layer 0 - Base
+# ============================================================
+
+[[keymap.layer]]
+
 name = "base_layer"
+
 keys = """
 Escape Kc1    Kc2   Kc3   Kc4   Kc5 Kc6 Kc7 Kc8   Kc9 Kc0
 Tab    Q      W     E     R     T   Y   U   I     O   P
@@ -38,8 +131,15 @@ LShift Z      X     C     V     B   N   M   Comma Dot RShift
     LCtrl   LAlt    Space MO(3) MO(2) MO(1)   LGui           Backspace
 """
 
-[[layer]]
+
+# ============================================================
+# Layer 1
+# ============================================================
+
+[[keymap.layer]]
+
 name = "layer_1"
+
 keys = """
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
@@ -48,8 +148,15 @@ _ _ _ _ _ _ _ _ _ _ _
   _ _ _ _ _ _ _     _
 """
 
-[[layer]]
+
+# ============================================================
+# Layer 2
+# ============================================================
+
+[[keymap.layer]]
+
 name = "layer_2"
+
 keys = """
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
@@ -58,36 +165,117 @@ _ _ _ _ _ _ _ _ _ _ _
   _ _ _ _ _ _ _     _
 """
 
-[[layer]]
+
+# ============================================================
+# Layer 3
+# ============================================================
+
+[[keymap.layer]]
+
 name = "layer_3"
+
 keys = """
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _
   _ _ _ _ _ _ _     _
 """
 
-[[layer]]
+
+# ============================================================
+# Layer 4
+# ============================================================
+
+[[keymap.layer]]
+
 name = "layer_4"
+
 keys = """
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _
-_ _ _ _ _ _ _ _ _ _ _
+_ _ _ _ _ _ _ _ _ _
   _ _ _ _ _ _ _     _
 """
+
+
+# ============================================================
+# Host / Vial configuration
+# ============================================================
 
 [host]
-# Unlock combination: simultaneous press of specified keys
-# Format: [[row, col], [row, col], ...]
-unlock_keys = [[0, 0], [0, 1]]  # Keys at (row=0,col=0) and (row=0,col=1)
+
+# Enable Vial configuration.
+vial_enabled = true
+
+# Unlock combination:
+#
+# Row 0 Col 0 + Row 0 Col 1
+#
+# In your keyboard these are:
+# Escape + Kc1
+
+unlock_keys = [
+    [0, 0],
+    [0, 1]
+]
+
+
+# ============================================================
+# BLE configuration
+# ============================================================
 
 [ble]
+
 enabled = true
-# vddh has an internal voltage divider
- battery_adc_pin = "vddh"
-# Or
-#battery_adc_pin = "P0_04"
-#adc_divider_measured = 2000
-#adc_divider_total = 2806
+
+# nRF52840 VDDH has an internal voltage divider.
+battery_adc_pin = "vddh"
+
+# If your hardware uses an external voltage divider instead,
+# use something like:
+#
+# battery_adc_pin = "P0_04"
+# adc_divider_measured = 2000
+# adc_divider_total = 2806
+
+
+# ============================================================
+# Optional storage configuration
+# ============================================================
+
+# RMK enables storage by default.
+#
+# Normally you don't need to configure this.
+#
+# [storage]
+# enabled = true
+# clear_storage = false
+
+
+# ============================================================
+# Optional behavior configuration
+# ============================================================
+
+# Example:
+#
+# [behavior.combo]
+# timeout = "150ms"
+#
+# combos = [
+#     { actions = ["J", "K"], output = "Escape" },
+# ]
+
+
+# ============================================================
+# Optional nRF52840 configuration
+# ============================================================
+
+# Normally RMK's default configuration is sufficient.
+#
+# [chip.nrf52840]
+#
+# dcdc_reg0 = true
+# dcdc_reg1 = true
+# dcdc_reg0_voltage = "3V3"
