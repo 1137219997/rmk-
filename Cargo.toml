@@ -1,12 +1,12 @@
 [package]
-name = "{{ project_name }}"
-version = "0.2.0"
-authors = ["Haobo Gu <haobogu@outlook.com>"]
+name = "A50-1"
+version = "0.1.0"
+authors = ["Juansitamen"]
 description = "Keyboard firmware written in Rust"
 homepage = "https://github.com/rmk-rs/rmk"
 repository = "https://github.com/rmk-rs/rmk"
 readme = "README.md"
-edition = "2021"
+edition = "2026"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
