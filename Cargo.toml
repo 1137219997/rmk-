@@ -70,3 +70,8 @@ debug = true
 opt-level = "z"
 overflow-checks = false
 lto = "fat"
+
+[build-dependencies]
+xz2 = "0.1.7"
+json = "0.12"
+const-gen = "1.6"
