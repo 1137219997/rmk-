@@ -1,2 +1,6 @@
 [build]
 target = "thumbv7em-none-eabihf"
+
+[env]
+KEYBOARD_TOML_PATH = { value = "keyboard.toml", relative = true }
+VIAL_JSON_PATH= { value = "vial.json", relative = true }
