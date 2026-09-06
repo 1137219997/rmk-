@@ -296,7 +296,7 @@ rotation = 0
 renderer = "OledRenderer"
 
 
-[display.i2c]
+[display.protocol.i2c]
 
 instance = "TWISPI0"
 
