@@ -20,6 +20,9 @@ jobs:
         with:
           targets: thumbv7em-none-eabihf
 
+      - name: Install ARM GCC toolchain
+        run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
+
       - name: Install cargo-make
         uses: davidB/rust-cargo-make@v1
 
