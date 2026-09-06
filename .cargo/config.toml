@@ -1,5 +1,2 @@
 [build]
 target = "thumbv7em-none-eabihf"
-
-[env]
-KEYBOARD_TOML_PATH = "keyboard.toml"
