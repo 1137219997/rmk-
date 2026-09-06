@@ -293,8 +293,6 @@ size = "128x64"
 
 rotation = 0
 
-renderer = "OledRenderer"
-
 
 [display.protocol.i2c]
 
