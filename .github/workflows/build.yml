@@ -21,10 +21,10 @@ jobs:
           targets: thumbv7em-none-eabihf
 
       - name: Install cargo-make
-        run: cargo install --force cargo-make
+        uses: davidB/rust-cargo-make@v1
 
       - name: Build UF2
-        run: cargo make uf2 --release
+        run: cargo make uf2
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
