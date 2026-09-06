@@ -304,4 +304,4 @@ sda = "P0_06"
 
 scl = "P0_08"
 
-address = 0x3C
+address = 0x3D
