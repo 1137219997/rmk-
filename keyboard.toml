@@ -296,7 +296,7 @@ rotation = 0
 
 [display.protocol.i2c]
 
-instance = "I2C1"
+instance = "TWISPI0"
 
 sda = "P0_06"
 
