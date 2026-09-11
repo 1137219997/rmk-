@@ -232,6 +232,7 @@ enabled = true
 
 # nRF52840 VDDH has an internal voltage divider.
 battery_adc_pin = "vddh"
+use_2m_phy = false
 
 # If your hardware uses an external voltage divider instead,
 # use something like:
@@ -279,25 +280,3 @@ battery_adc_pin = "vddh"
 # dcdc_reg0 = true
 # dcdc_reg1 = true
 # dcdc_reg0_voltage = "3V3"
-
-# ============================================================
-# OLED Display
-# SSD1306 0.96" 128x64 I2C
-# ============================================================
-
-[display]
-
-driver = "ssd1306"
-
-size = "128x64"
-
-rotation = 0
-
-
-[display.protocol.i2c]
-
-instance = "TWISPI0"
-
-sda = "P0_06"
-
-scl = "P0_08"
